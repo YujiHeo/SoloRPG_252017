@@ -29,7 +29,6 @@ public class BaseController : MonoBehaviour
     protected virtual void Update()
     {
         HandleAction();
-        Rotate(lookDirection);
     }
 
     protected virtual void FixedUpdate()
@@ -61,18 +60,6 @@ public class BaseController : MonoBehaviour
         _rigidbody.velocity = new Vector2(newXVelocity, _rigidbody.velocity.y);
     }
 
-    private void Rotate(Vector2 direction)
-    {
-        float rotZ = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
-        bool isLeft = Mathf.Abs(rotZ) > 90f;
-
-        characterRenderer.flipX = isLeft;
-
-        if (weaponPivot != null)
-        {
-            weaponPivot.rotation = Quaternion.Euler(0, 0, rotZ);
-        }
-    }
 
     public void ApplyKnockback(Transform other, float power, float duration)
     {

@@ -5,20 +5,29 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager sharedinstance = null;
+
+    public CameraManager cameraManager;
+
     public SpawnPoint playerSpawnPoint;
 
-    // Start is called before the first frame update
+
+    private void Awake()
+    {
+        if(sharedinstance != null && sharedinstance != this)
+        {
+            Destroy(gameObject);
+        }
+        else
+        {
+            sharedinstance = this;
+        }
+    }
+
     void Start()
     {
         SetupScene();
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void SetupScene()
     {
         SpawnPlayer();
@@ -29,6 +38,7 @@ public class GameManager : MonoBehaviour
         if (playerSpawnPoint != null)
         {
             GameObject player = playerSpawnPoint.SpawnObject();
+            cameraManager.virtualCamera.Follow = player.transform;
         }
     }
 }
