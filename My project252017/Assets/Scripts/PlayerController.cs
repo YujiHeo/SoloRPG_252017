@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Tilemaps;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class PlayerController : BaseController
 {
@@ -13,6 +15,8 @@ public class PlayerController : BaseController
     private Vector2 maxBounds;
 
     private Vector3 startPosition;
+
+    public GameObject isFlip;
     
 
     protected override void Start()
@@ -20,7 +24,7 @@ public class PlayerController : BaseController
         base.Start();
         camera = Camera.main;
 
-
+        isFlip.GetComponentInChildren<Transform>();
 
         // minBounds = boundary.bounds.min;
         // minBounds = boundary.bounds.max;
@@ -36,9 +40,18 @@ public class PlayerController : BaseController
     }
     */
 
-    private void PlayerStart()
+    void LateUpdate()
     {
+        if(Input.GetKeyDown(KeyCode.A) || Input.GetKeyDown(KeyCode.LeftArrow))
+        {
 
+            isFlip.transform.localScale = new Vector3(-1, 1, 1);
+        }
+
+        if (Input.GetKeyDown(KeyCode.D) || Input.GetKeyDown(KeyCode.RightArrow))
+        {
+            isFlip.transform.localScale = new Vector3(1, 1, 1);
+        }
     }
 
     protected override void HandleAction()
