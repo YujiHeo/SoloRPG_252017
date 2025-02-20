@@ -8,7 +8,6 @@ public class FlappyUIManager : MonoBehaviour
 {
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI restartText;
-    public TextMeshProUGUI andJuly;
 
     public void Start()
     {
@@ -24,13 +23,11 @@ public class FlappyUIManager : MonoBehaviour
         }
 
         restartText.gameObject.SetActive(false);
-        andJuly.gameObject.SetActive(false);
     }
 
     public void SetRestart()
     {
         restartText.gameObject.SetActive(true);
-        andJuly.gameObject.SetActive(true);
     }
 
     public void UpdateScore(int score)
