@@ -9,13 +9,14 @@ public class CameraManager : MonoBehaviour
 
     [HideInInspector]public CinemachineVirtualCamera virtualCamera;
 
-    public static BoxCollider2D cameraBoundary;
+    public BoxCollider2D cameraBoundary;
 
     public new static Camera camera;
 
     public Transform player;
     public Vector3 offset;
 
+    private float minX, maxX, minY, maxY;
 
     private void Awake()
     {
@@ -38,11 +39,30 @@ public class CameraManager : MonoBehaviour
     {
         //cameraBoundary = GetComponentInChildren<BoxCollider2D>();
 
-        
+        if (cameraBoundary != null)
+        {
+            // Collider의 bounds를 이용하여 경계값을 계산
+            minX = cameraBoundary.bounds.min.x;
+            maxX = cameraBoundary.bounds.max.x;
+            minY = cameraBoundary.bounds.min.y;
+            maxY = cameraBoundary.bounds.max.y;
+        }
+
     }
 
     private void Update()
     {
         transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, -10);
     }
+
+    private void LateUpdate()
+    {
+        if (player !=null)
+        {
+            float clampedX = Mathf.Clamp(player.position.x, minX, maxX);
+            float clampedY = Mathf.Clamp(player.position.y, minY, maxY);
+            transform.position = new Vector3(clampedX, clampedY, transform.position.z);
+        }
+    }
+
 }
