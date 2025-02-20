@@ -4,24 +4,26 @@ using UnityEngine;
 
 public class PlayerController : BaseController
 {
-    private Camera camera;
+    private new Camera camera;
 
     public float jumpForce = 10f;
     private bool isGrounded = true;
 
-    public BoxCollider2D boundary;
-
     private Vector2 minBounds;
     private Vector2 maxBounds;
 
+    private Vector3 startPosition;
+    
 
     protected override void Start()
     {
         base.Start();
         camera = Camera.main;
 
-       // minBounds = boundary.bounds.min;
-       // minBounds = boundary.bounds.max;
+
+
+        // minBounds = boundary.bounds.min;
+        // minBounds = boundary.bounds.max;
     }
 
     /*
@@ -33,6 +35,11 @@ public class PlayerController : BaseController
         transform.position = pos;
     }
     */
+
+    private void PlayerStart()
+    {
+
+    }
 
     protected override void HandleAction()
     {

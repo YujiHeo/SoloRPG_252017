@@ -7,6 +7,9 @@ TagManager:
   - Ground
   - player
   - VirtualCamera
+  - Obstacle
+  - BackGround
+  - SpawnPoint
   layers:
   - Default
   - TransparentFX

@@ -9,7 +9,9 @@ public class GameManager : MonoBehaviour
 
     public CameraManager cameraManager;
 
-    public SpawnPoint playerSpawnPoint;
+    public Transform playerSpawnPoint;
+
+    public GameObject player;
 
 
     private void Awake()
@@ -27,6 +29,7 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         SetupScene();
+
     }
     public void SetupScene()
     {
@@ -35,10 +38,7 @@ public class GameManager : MonoBehaviour
 
     public void SpawnPlayer()
     {
-        if (playerSpawnPoint != null)
-        {
-            GameObject player = playerSpawnPoint.SpawnObject();
-            cameraManager.virtualCamera.Follow = player.transform;
-        }
+        //player = GameObject.FindWithTag("SpawnPoint");
+        player.transform.position = new Vector2(playerSpawnPoint.transform.position.x, playerSpawnPoint.transform.position.y);
     }
 }

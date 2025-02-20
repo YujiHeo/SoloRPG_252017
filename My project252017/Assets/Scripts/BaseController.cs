@@ -18,7 +18,7 @@ public class BaseController : MonoBehaviour
 
     protected virtual void Awake()
     {
-        _rigidbody = GetComponent<Rigidbody2D>(); //자 RigidBody 컴포넌트를 갖고와라.
+        _rigidbody = GetComponent<Rigidbody2D>();
     }
 
     protected virtual void Start()
