@@ -20,10 +20,11 @@ public class PlayerController : BaseController
         base.Start();
         camera = Camera.main;
 
-        minBounds = boundary.bounds.min;
-        minBounds = boundary.bounds.max;
+       // minBounds = boundary.bounds.min;
+       // minBounds = boundary.bounds.max;
     }
 
+    /*
     private void Update()
     {
         Vector3 pos = transform.position;
@@ -31,6 +32,7 @@ public class PlayerController : BaseController
         pos.y = Mathf.Clamp(pos.y, minBounds.y, maxBounds.y);
         transform.position = pos;
     }
+    */
 
     protected override void HandleAction()
     {

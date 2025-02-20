@@ -122,6 +122,7 @@ MonoBehaviour:
   characterRenderer: {fileID: 6659717215820167871}
   weaponPivot: {fileID: 0}
   jumpForce: 10
+  boundary: {fileID: 0}
 --- !u!1 &6410929981207646797
 GameObject:
   m_ObjectHideFlags: 0
