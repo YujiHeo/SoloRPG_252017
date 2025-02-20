@@ -9,19 +9,33 @@ public class PlayerController : BaseController
     public float jumpForce = 10f;
     private bool isGrounded = true;
 
+    public BoxCollider2D boundary;
+
+    private Vector2 minBounds;
+    private Vector2 maxBounds;
+
+
     protected override void Start()
     {
         base.Start();
         camera = Camera.main;
+
+        minBounds = boundary.bounds.min;
+        minBounds = boundary.bounds.max;
+    }
+
+    private void Update()
+    {
+        Vector3 pos = transform.position;
+        pos.x = Mathf.Clamp(pos.x, minBounds.x, maxBounds.x);
+        pos.y = Mathf.Clamp(pos.y, minBounds.y, maxBounds.y);
+        transform.position = pos;
     }
 
     protected override void HandleAction()
     {
         float horizontal = Input.GetAxisRaw("Horizontal");
-        //float vertial = Input.GetAxisRaw("Vertical");
         movementDirection = new Vector2(horizontal, 0).normalized;
-
-        Vector2 mousePosition = Input.mousePosition;
 
         if (lookDirection.magnitude < .9f)
         {

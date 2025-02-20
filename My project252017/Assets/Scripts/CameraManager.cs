@@ -9,6 +9,10 @@ public class CameraManager : MonoBehaviour
 
     [HideInInspector]public CinemachineVirtualCamera virtualCamera;
 
+    public static BoxCollider2D cameraBoundary;
+
+    public static Camera camera;
+
     private void Awake()
     {
         if (sharedinstance != null && sharedinstance != this)
@@ -22,5 +26,10 @@ public class CameraManager : MonoBehaviour
 
         GameObject vCamGameObject = GameObject.FindWithTag("VirtualCamera");
         virtualCamera = vCamGameObject.GetComponent<CinemachineVirtualCamera>();
+    }
+
+    private void Start()
+    {
+        cameraBoundary = GetComponentInChildren<BoxCollider2D>();
     }
 }
