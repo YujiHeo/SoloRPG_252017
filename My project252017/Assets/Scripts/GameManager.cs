@@ -10,9 +10,7 @@ public class GameManager : MonoBehaviour
     public CameraManager cameraManager;
 
     public Transform playerSpawnPoint;
-
     public GameObject player;
-
 
     private void Awake()
     {

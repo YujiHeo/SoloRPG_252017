@@ -11,7 +11,11 @@ public class CameraManager : MonoBehaviour
 
     public static BoxCollider2D cameraBoundary;
 
-    public static Camera camera;
+    public new static Camera camera;
+
+    public Transform player;
+    public Vector3 offset;
+
 
     private void Awake()
     {
@@ -24,12 +28,21 @@ public class CameraManager : MonoBehaviour
             sharedinstance = this;
         }
 
+        /*
         GameObject vCamGameObject = GameObject.FindWithTag("VirtualCamera");
         virtualCamera = vCamGameObject.GetComponent<CinemachineVirtualCamera>();
+        */
     }
 
     private void Start()
     {
-        cameraBoundary = GetComponentInChildren<BoxCollider2D>();
+        //cameraBoundary = GetComponentInChildren<BoxCollider2D>();
+
+        
+    }
+
+    private void Update()
+    {
+        transform.position = new Vector3(player.position.x + offset.x, player.position.y + offset.y, -10);
     }
 }
